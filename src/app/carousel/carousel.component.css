@@ -1,0 +1,14 @@
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+}
+
+.carouselBtn {
+  border-radius: 20px;
+  margin: 10px;
+  color: white;
+  background-color: purple;
+  border: none;
+}
