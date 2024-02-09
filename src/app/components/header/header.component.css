@@ -1,8 +1,9 @@
 .header {
   display: flex;
   align-items: center;
-  background-color: purple;
+  background-color: orange;
   width: 100%;
+  height: 80px;
 }
 
 .title {
@@ -18,6 +19,7 @@
   color: white;
   margin: 0px 20px;
   text-decoration: none;
+  font-size: 20px;
 }
 
 .icons {

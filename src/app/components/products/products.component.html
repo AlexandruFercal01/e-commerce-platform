@@ -1,6 +1,11 @@
-<div class="productsContainer">
-  <app-product-card
-    *ngFor="let product of products"
-    [product]="product"
-  ></app-product-card>
+<div class="container">
+  <div class="filterContainer">
+    <app-products-filters></app-products-filters>
+  </div>
+  <div class="productsContainer">
+    <app-product-card
+      *ngFor="let product of products"
+      [product]="product"
+    ></app-product-card>
+  </div>
 </div>

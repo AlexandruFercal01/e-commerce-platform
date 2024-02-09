@@ -1,14 +1,22 @@
-<mat-card class="example-card">
+<mat-card class="example-card" style="cursor: pointer">
   <mat-card-header>
-    <mat-card-title>{{ product.title }}</mat-card-title>
+    <mat-card-title [routerLink]="['/products', product.id]">{{
+      product.title
+    }}</mat-card-title>
   </mat-card-header>
-  <img mat-card-image src="{{ product.image }}" height="400px" width="400px" />
+  <img
+    mat-card-image
+    [routerLink]="['/products', product.id]"
+    src="{{ product.image }}"
+    height="300px"
+    width="300px"
+  />
   <mat-card-content align="center">
-    <p>{{ product.description }}</p>
+    <!-- <p>{{ product.description }}</p> -->
     <h2 style="margin-left: 20px">{{ product.price }}</h2>
   </mat-card-content>
   <mat-card-actions align="end">
-    <button mat-button style="background-color: white; width: 100%">
+    <button mat-button style="background-color: orange; width: 100%">
       Add to cart
     </button>
   </mat-card-actions>

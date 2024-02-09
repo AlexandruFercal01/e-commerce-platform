@@ -3,6 +3,21 @@
   flex-wrap: wrap;
   width: 100vw;
   justify-content: center;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 80px);
   overflow: auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.filterContainer {
+  width: 400px;
+  height: calc(100vh - 100px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px;
+  background-color: gainsboro;
 }

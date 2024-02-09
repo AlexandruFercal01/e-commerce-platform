@@ -1,0 +1,60 @@
+<div style="margin-top: 20px">
+  <mat-accordion>
+    <mat-expansion-panel style="width: 300px">
+      <mat-expansion-panel-header>
+        <mat-panel-title> Category </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-radio-group style="display: flex; flex-direction: column">
+        <mat-radio-button value="interior">Interior</mat-radio-button>
+        <mat-radio-button value="exterior">Exterior</mat-radio-button>
+        <mat-radio-button value="cleaners">Cleaners</mat-radio-button>
+      </mat-radio-group>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<div style="margin-top: 20px">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Price </mat-panel-title>
+      </mat-expansion-panel-header>
+      <input matInput /> - <input matInput type="number" />
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<div style="margin-top: 20px">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Rating </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-radio-group style="display: flex; flex-direction: column">
+        <mat-radio-button value="5"
+          ><mat-icon style="color: orange" *ngFor="let i of [1, 2, 3, 4, 5]"
+            >star</mat-icon
+          ></mat-radio-button
+        >
+        <mat-radio-button value="4"
+          ><mat-icon style="color: orange" *ngFor="let i of [1, 2, 3, 4]"
+            >star</mat-icon
+          ></mat-radio-button
+        >
+        <mat-radio-button value="3"
+          ><mat-icon style="color: orange" *ngFor="let i of [1, 2, 3]"
+            >star</mat-icon
+          ></mat-radio-button
+        >
+        <mat-radio-button value="2"
+          ><mat-icon style="color: orange" *ngFor="let i of [1, 2]"
+            >star</mat-icon
+          ></mat-radio-button
+        >
+        <mat-radio-button value="1"
+          ><mat-icon style="color: orange" *ngFor="let i of [1]"
+            >star</mat-icon
+          ></mat-radio-button
+        >
+      </mat-radio-group>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
