@@ -3,10 +3,11 @@ export class ProductModel {
   title: string;
   description: string;
   image: string;
-  price?: number;
+  price: number;
   quantity?: number;
   available: boolean;
   category: string;
+  rating?: number;
 
   constructor(
     id: string,
@@ -15,7 +16,8 @@ export class ProductModel {
     image: string,
     price: number,
     quantity: number,
-    category: string
+    category: string,
+    rating?: number
   ) {
     this.id = id;
     this.title = title;
@@ -25,5 +27,6 @@ export class ProductModel {
     this.quantity = quantity;
     this.available = this.quantity > 0;
     this.category = category;
+    this.rating = rating || 0;
   }
 }

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ProductModel } from '../../../models/products.model';
 import { Router } from '@angular/router';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-product-card',
@@ -10,9 +11,21 @@ import { Router } from '@angular/router';
 export class ProductCardComponent {
   @Input() product!: ProductModel;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private cartService: CartService) {}
 
   goToProduct() {
     this.router.navigate(['/products', this.product.id]);
+  }
+
+  createRange(end: number) {
+    const stars = [];
+    for (var i = 0; i < end; i++) {
+      stars.push(i);
+    }
+    return stars;
+  }
+
+  addToCart(product: ProductModel) {
+    this.cartService.addItemToCart(product);
   }
 }

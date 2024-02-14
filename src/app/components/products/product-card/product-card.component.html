@@ -11,13 +11,40 @@
     height="300px"
     width="300px"
   />
-  <mat-card-content align="center">
+  <mat-card-content align="start">
     <!-- <p>{{ product.description }}</p> -->
     <h2 style="margin-left: 20px">{{ product.price }}</h2>
+    <p style="color: gray">
+      {{ product.available ? "In stock" : "Out of stock" }}
+    </p>
+    <div *ngIf="product.rating; else noRating">
+      <mat-icon
+        style="color: orange"
+        *ngFor="let i of createRange(product.rating!)"
+        >star</mat-icon
+      >
+      <mat-icon
+        style="color: gray"
+        *ngFor="let i of createRange(5 - product.rating!)"
+      >
+        star
+      </mat-icon>
+    </div>
+    <ng-template #noRating>
+      <div>
+        <mat-icon style="color: gray" *ngFor="let if of createRange(5)"
+          >star</mat-icon
+        >
+      </div>
+    </ng-template>
   </mat-card-content>
   <mat-card-actions align="end">
-    <button mat-button style="background-color: orange; width: 100%">
-      Add to cart
+    <button
+      mat-button
+      style="background-color: orange; width: 100%"
+      (click)="addToCart(product)"
+    >
+      > Add to cart
     </button>
   </mat-card-actions>
 </mat-card>
