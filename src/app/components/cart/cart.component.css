@@ -1,0 +1,6 @@
+.cartBody {
+  width: 80%;
+  height: calc(100vh - 80px);
+  background-color: gainsboro;
+  margin: auto;
+}

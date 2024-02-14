@@ -16,6 +16,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatRadioModule } from '@angular/material/radio';
 import { ProductsFiltersComponent } from './components/products/products-filters/products-filters.component';
+import { ProductsService } from './services/products.service';
+import { CartComponent } from './components/cart/cart.component';
+import { AddedProductCardComponent } from './components/cart/added-product-card/added-product-card.component';
+import { CartService } from './services/cart.service';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -26,6 +31,8 @@ import { ProductsFiltersComponent } from './components/products/products-filters
     ProductsComponent,
     ProductCardComponent,
     ProductsFiltersComponent,
+    CartComponent,
+    AddedProductCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,8 +44,9 @@ import { ProductsFiltersComponent } from './components/products/products-filters
     MatExpansionModule,
     MatRadioModule,
     MatInputModule,
+    MatStepperModule,
   ],
-  providers: [provideAnimationsAsync()],
+  providers: [provideAnimationsAsync(), ProductsService, CartService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
