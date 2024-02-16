@@ -1,10 +1,29 @@
 <div class="addedProduct">
-  <img src="{{ product.image }}" width="100px" height="100px" />
-  <div>
-    <h3>{{ product.title }}</h3>
-    <p>{{ product.price }}</p>
+  <div class="buttons">
+    <button mat-icon-button (click)="onDelete(product)">
+      <mat-icon style="margin-right: 10px; color: red">delete</mat-icon>
+    </button>
+    <button mat-icon-button (click)="onDelete(product)">
+      <mat-icon style="margin-right: 10px; color: red">favorite</mat-icon>
+    </button>
   </div>
-  <button mat-icon-button>
-    <mat-icon style="margin-right: 10px">delete</mat-icon>
-  </button>
+  <div class="content">
+    <img src="{{ product.image }}" width="140px" height="140px" />
+    <h3>
+      <b>{{ product.title }}</b>
+    </h3>
+
+    <div class="counter">
+      <button mat-icon-button (click)="decreaseQuantityOfProduct(product)">
+        <mat-icon color="red">remove</mat-icon>
+      </button>
+      <h4 style="color: gray; margin: 0 10px">{{ product.quantity }}</h4>
+      <button mat-icon-button (click)="increaseQuantityOfProduct(product)">
+        <mat-icon color="red">add</mat-icon>
+      </button>
+    </div>
+    <div class="priceInfo">
+      <h2>{{ product.price * product.quantity }}$</h2>
+    </div>
+  </div>
 </div>

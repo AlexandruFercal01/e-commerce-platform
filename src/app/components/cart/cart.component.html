@@ -1,8 +1,29 @@
 <div class="cartBody">
-  <app-added-product-card
-    *ngFor="let product of cartItems"
-    [product]="product"
-  ></app-added-product-card>
+  <div class="products">
+    <app-added-product-card
+      *ngFor="let product of cartItems"
+      [product]="product"
+    ></app-added-product-card>
+  </div>
+  <div class="checkout">
+    <div class="checkoutContainer">
+      <h1>Checkout</h1>
+      <h3>Total: 200 $</h3>
+      <hr width="100%" />
+      <mat-form-field>
+        <mat-label>Voucher</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <button mat-raised-button style="margin: 20px 0">Apply Voucher</button>
+      <hr width="100%" />
+      <button
+        mat-raised-button
+        style="background-color: orange; margin: 20px 0"
+      >
+        Checkout
+      </button>
+    </div>
+  </div>
 </div>
 
 <!-- <div class="cartBody">

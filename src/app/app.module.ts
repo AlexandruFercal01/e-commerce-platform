@@ -12,7 +12,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { ProductCardComponent } from './components/products/product-card/product-card.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
+import { MatFormField, MatInputModule } from '@angular/material/input';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatRadioModule } from '@angular/material/radio';
 import { ProductsFiltersComponent } from './components/products/products-filters/products-filters.component';
@@ -21,6 +21,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { AddedProductCardComponent } from './components/cart/added-product-card/added-product-card.component';
 import { CartService } from './services/cart.service';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -40,11 +41,12 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatIconModule,
     MatCardModule,
     MatButtonModule,
-    MatInputModule,
     MatExpansionModule,
     MatRadioModule,
-    MatInputModule,
     MatStepperModule,
+    MatBadgeModule,
+    MatInputModule,
+    MatFormField,
   ],
   providers: [provideAnimationsAsync(), ProductsService, CartService],
   bootstrap: [AppComponent],

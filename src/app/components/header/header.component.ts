@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,11 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  constructor(private router: Router) {}
+  cartCount = 0;
+
+  constructor(private router: Router, private cartService: CartService) {
+    this.cartService.cartCount.subscribe((count) => (this.cartCount = count));
+  }
 
   openCart() {
     this.router.navigate(['/cart']);

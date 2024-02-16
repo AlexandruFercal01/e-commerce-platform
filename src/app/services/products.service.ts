@@ -1,6 +1,8 @@
 import { Subject } from 'rxjs';
 import { ProductModel } from '../models/products.model';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class ProductsService {
   products: ProductModel[] = [
     {
@@ -52,6 +54,7 @@ export class ProductsService {
       available: false,
       category: 'Cleaners',
       rating: 3,
+      quantity: 0,
     },
     {
       id: '5',
@@ -75,6 +78,7 @@ export class ProductsService {
       price: 19.99,
       available: true,
       category: 'Interior',
+      quantity: 6,
     },
     {
       id: '7',
@@ -98,6 +102,7 @@ export class ProductsService {
       price: 22.99,
       available: true,
       category: 'Exterior',
+      quantity: 9,
     },
   ];
   filteredProducts = new Subject<ProductModel[]>();
@@ -105,6 +110,10 @@ export class ProductsService {
 
   getProducts(): ProductModel[] {
     return this.products.slice();
+  }
+
+  onAddToCart(product: ProductModel) {
+    console.log(this.productsFiltered);
   }
 
   onFilterByCategory(category: string) {
