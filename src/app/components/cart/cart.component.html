@@ -1,5 +1,6 @@
-<div class="cartBody">
+<div class="cartBody" *ngIf="cartItems.length > 0">
   <div class="products">
+    <h2>Number of items: {{ cartItems.length }}</h2>
     <app-added-product-card
       *ngFor="let product of cartItems"
       [product]="product"
@@ -14,16 +15,23 @@
         <mat-label>Voucher</mat-label>
         <input matInput />
       </mat-form-field>
-      <button mat-raised-button style="margin: 20px 0">Apply Voucher</button>
+      <button mat-raised-button>Apply Voucher</button>
       <hr width="100%" />
-      <button
-        mat-raised-button
-        style="background-color: orange; margin: 20px 0"
-      >
+      <button mat-raised-button style="background-color: orange">
         Checkout
       </button>
     </div>
   </div>
+</div>
+<div *ngIf="cartItems.length === 0" class="noItems">
+  <img
+    src="https://i.pinimg.com/originals/81/c4/fc/81c4fc9a4c06cf57abf23606689f7426.jpg"
+  />
+  <h1>Ooppss ...</h1>
+  <h2>Your cart is empty</h2>
+  <button mat-raised-button color="warn" routerLink="/products">
+    Continue Shopping
+  </button>
 </div>
 
 <!-- <div class="cartBody">

@@ -10,14 +10,15 @@ import { ProductsService } from '../../services/products.service';
 export class ProductsComponent implements OnInit {
   products: ProductModel[] = [];
 
-  constructor(private productsService: ProductsService) {}
-
-  ngOnInit() {
-    this.products = this.productsService.getProducts();
+  constructor(private productsService: ProductsService) {
     this.productsService.filteredProducts.subscribe(
       (products: ProductModel[]) => {
         this.products = products;
       }
     );
+  }
+
+  ngOnInit() {
+    this.products = this.productsService.getProducts();
   }
 }

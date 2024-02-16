@@ -1,8 +1,6 @@
 <div class="header">
   <img
     src="https://logowik.com/content/uploads/images/car-cleaning-service3510.logowik.com.webp"
-    height="75px"
-    style="border-radius: 100%"
   />
   <div class="nav">
     <a class="nav-link" routerLink="/home"> Home </a>
@@ -11,7 +9,7 @@
   </div>
   <div class="icons">
     <button mat-icon-button>
-      <mat-icon style="transform: scale(1.2)">account_circle</mat-icon>
+      <mat-icon class="icon">account_circle</mat-icon>
     </button>
     <button
       matBadge="{{ cartCount }}"
@@ -19,7 +17,7 @@
       mat-icon-button
       (click)="openCart()"
     >
-      <mat-icon style="transform: scale(1.2)">shopping_cart</mat-icon>
+      <mat-icon class="icon">shopping_cart</mat-icon>
     </button>
   </div>
 </div>

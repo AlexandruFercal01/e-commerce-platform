@@ -42,6 +42,7 @@ export class ProductsService {
       quantity: 3,
       available: true,
       category: 'Cleaners',
+      rating: 3,
     },
     {
       id: '4',
@@ -67,6 +68,7 @@ export class ProductsService {
       quantity: 7,
       available: true,
       category: 'Cleaners',
+      rating: 5,
     },
     {
       id: '6',
@@ -91,6 +93,7 @@ export class ProductsService {
       quantity: 2,
       available: true,
       category: 'Interior',
+      rating: 4,
     },
     {
       id: '8',
@@ -103,6 +106,102 @@ export class ProductsService {
       available: true,
       category: 'Exterior',
       quantity: 9,
+    },
+    {
+      id: '9',
+      title: 'Car Cleaning Accessory Bag',
+      description: 'This bag contains all you need for detailing a car.',
+      image:
+        'https://www.carhub.ro/media/catalog/product/cache/1/image/2000x2000/9df78eab33525d08d6e5fb8d27136e95/a/d/adbl-wizualizacja-roller_torba-mala-4.png',
+      price: 59.99,
+      available: true,
+      category: 'Exterior',
+      quantity: 10,
+    },
+    {
+      id: '10',
+      title: '12 Products Pack',
+      description:
+        'Pack that contains 12 cleansers for your car. Ideal for detailing and cleaning.',
+      image:
+        'https://s13emagst.akamaized.net/products/58858/58857296/images/res_3681738b162a72f8ad8c94c9f5e6c83c.jpg?width=450&height=450&hash=90DC4F6B81228C2AC169BF7566C1B287',
+      price: 79.99,
+      available: true,
+      quantity: 12,
+      category: 'Exterior',
+      rating: 5,
+    },
+    {
+      id: '11',
+      title: 'Seat Cleaner',
+      description:
+        'Seat cleaner for car interior. Removes dirt, and grime from seats.',
+      image:
+        'https://s13emagst.akamaized.net/products/41280/41279163/images/res_e43678579afe5e24efa8ea197c53fd59.jpg?width=450&height=450&hash=C496E96B1DF361C88071E71C02819E9B',
+      price: 9.99,
+      available: true,
+      category: 'Interior',
+      quantity: 15,
+    },
+    {
+      id: '12',
+      title: 'Interior Detailing Brushes',
+      description: 'Set of brushes for detailing car interiors.',
+      image:
+        'https://s13emagst.akamaized.net/products/39003/39002101/images/res_d8a49f80a20a85ecd15e6e39bba8cb3b.jpg?width=300&height=300&hash=6486E2CE07C6A26358784384F3C85B43',
+      price: 19.99,
+      available: true,
+      category: 'Interior',
+      quantity: 21,
+      rating: 4,
+    },
+    {
+      id: '13',
+      title: 'Leather Cleaning Kit',
+      description:
+        'Leather wax for car interior. Removes dirt, grime, and creases.',
+      image:
+        'https://www.carhub.ro/media/catalog/product/cache/1/image/2000x2000/9df78eab33525d08d6e5fb8d27136e95/a/d/adbl_leather_kit-_ingrijire_piele_auto-_curatare_si_mentenanta_piele_auto-produse.png',
+      price: 9.99,
+      available: true,
+      category: 'Interior',
+      quantity: 15,
+      rating: 4,
+    },
+    {
+      id: '14',
+      title: 'Auto Perfume',
+      description: 'Make your car smell more fresh and clean.',
+      image:
+        'https://www.carhub.ro/media/catalog/product/cache/1/image/2000x2000/9df78eab33525d08d6e5fb8d27136e95/p/a/parfum_auto_fig_forest_adbl_magic_mist_200ml_carhub.jpg',
+      price: 7.99,
+      available: true,
+      category: 'Interior',
+      quantity: 21,
+      rating: 5,
+    },
+    {
+      id: '15',
+      title: 'Bucket',
+      description: 'Bucket for car detailing. Ideal for cleaning your car.',
+      image:
+        'https://www.carhub.ro/media/catalog/product/cache/1/small_image/1200x1200/9df78eab33525d08d6e5fb8d27136e95/g/a/galeata_spalare_auto_meguiar_s_empty_bucket_19l_rg203_carhub.jpg',
+      price: 9.99,
+      available: true,
+      category: 'Exterior',
+      quantity: 21,
+    },
+    {
+      id: '16',
+      title: 'Atomizer',
+      description: 'Great for spreading bubbles all over your car.',
+      image:
+        'https://www.carhub.ro/media/catalog/product/cache/1/small_image/1200x1200/9df78eab33525d08d6e5fb8d27136e95/a/t/atomizor_spuma_cu_presiune_si_pulverizator_2_in_1_adbl_bff_bfs_kit_carhub_2.png',
+      price: 17.99,
+      available: true,
+      category: 'Exterior',
+      quantity: 11,
+      rating: 4,
     },
   ];
   filteredProducts = new Subject<ProductModel[]>();
@@ -144,5 +243,9 @@ export class ProductsService {
     this.filteredProducts.next(
       this.productsFiltered.filter((product) => product.rating === rating)
     );
+  }
+
+  onRemoveFilter() {
+    this.filteredProducts.next(this.products);
   }
 }
