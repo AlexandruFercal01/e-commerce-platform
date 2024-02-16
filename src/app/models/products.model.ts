@@ -8,6 +8,7 @@ export class ProductModel {
   available: boolean;
   category: string;
   rating?: number;
+  isNew?: boolean;
 
   constructor(
     id: string,
@@ -17,7 +18,8 @@ export class ProductModel {
     price: number,
     quantity: number,
     category: string,
-    rating?: number
+    rating?: number,
+    isNew?: boolean
   ) {
     this.id = id;
     this.title = title;
@@ -28,5 +30,6 @@ export class ProductModel {
     this.available = this.quantity > 0;
     this.category = category;
     this.rating = rating || 0;
+    this.isNew = isNew || false;
   }
 }

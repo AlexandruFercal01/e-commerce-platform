@@ -17,6 +17,7 @@ export class ProductsService {
       available: true,
       category: 'Cleaners',
       rating: 5,
+      isNew: true,
     },
     {
       id: '2',
@@ -43,6 +44,7 @@ export class ProductsService {
       available: true,
       category: 'Cleaners',
       rating: 3,
+      isNew: true,
     },
     {
       id: '4',
@@ -81,6 +83,7 @@ export class ProductsService {
       available: true,
       category: 'Interior',
       quantity: 6,
+      isNew: true,
     },
     {
       id: '7',
@@ -94,6 +97,7 @@ export class ProductsService {
       available: true,
       category: 'Interior',
       rating: 4,
+      isNew: true,
     },
     {
       id: '8',
@@ -130,6 +134,7 @@ export class ProductsService {
       quantity: 12,
       category: 'Exterior',
       rating: 5,
+      isNew: true,
     },
     {
       id: '11',
@@ -179,6 +184,7 @@ export class ProductsService {
       category: 'Interior',
       quantity: 21,
       rating: 5,
+      isNew: true,
     },
     {
       id: '15',
@@ -202,6 +208,7 @@ export class ProductsService {
       category: 'Exterior',
       quantity: 11,
       rating: 4,
+      isNew: true,
     },
   ];
   filteredProducts = new Subject<ProductModel[]>();
@@ -209,6 +216,10 @@ export class ProductsService {
 
   getProducts(): ProductModel[] {
     return this.products.slice();
+  }
+
+  getNewProducts(): ProductModel[] {
+    return this.products.filter((product) => product.isNew === true).slice();
   }
 
   onAddToCart(product: ProductModel) {

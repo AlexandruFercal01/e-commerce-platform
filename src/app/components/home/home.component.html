@@ -1,4 +1,8 @@
-<h2 style="margin-left: 20px">
-  Clean Auto, the platform that finds the best products for your car
-</h2>
 <app-carousel></app-carousel>
+<h2>New Products</h2>
+<div class="products">
+  <app-product-card
+    *ngFor="let product of newProducts"
+    [product]="product"
+  ></app-product-card>
+</div>
