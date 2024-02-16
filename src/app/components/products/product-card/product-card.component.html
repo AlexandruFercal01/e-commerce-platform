@@ -4,6 +4,7 @@
     [routerLink]="['/products', product.id]"
     src="{{ product.image }}"
   />
+  <mat-chip class="chip" *ngIf="product.isNew">NEW</mat-chip>
   <mat-card-header
     ><mat-card-title [routerLink]="['/products', product.id]">{{
       product.title

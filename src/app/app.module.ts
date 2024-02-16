@@ -22,6 +22,7 @@ import { AddedProductCardComponent } from './components/cart/added-product-card/
 import { CartService } from './services/cart.service';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatBadgeModule,
     MatInputModule,
     MatFormField,
+    MatChipsModule,
   ],
   providers: [provideAnimationsAsync(), ProductsService, CartService],
   bootstrap: [AppComponent],
