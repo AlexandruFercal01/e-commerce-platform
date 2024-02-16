@@ -19,4 +19,12 @@ export class CartComponent {
   ngOnInit() {
     this.cartItems = this.cartService.getItems();
   }
+
+  getTotal() {
+    let total = 0;
+    for (const item of this.cartItems) {
+      total += item.price * item.quantity;
+    }
+    return total;
+  }
 }
