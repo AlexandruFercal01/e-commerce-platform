@@ -24,10 +24,9 @@ img {
   color: gray;
 }
 
-.chip {
+.chips {
   margin: 5px;
   position: absolute;
   top: 0;
   right: 0;
-  background-color: orange !important;
 }

@@ -147,6 +147,8 @@ export class ProductsService {
       available: true,
       category: 'Interior',
       quantity: 15,
+      sale: 20,
+      isNew: true,
     },
     {
       id: '12',

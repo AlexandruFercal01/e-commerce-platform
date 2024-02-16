@@ -9,6 +9,8 @@ export class ProductModel {
   category: string;
   rating?: number;
   isNew?: boolean;
+  isSale?: boolean;
+  sale?: number;
 
   constructor(
     id: string,
@@ -19,7 +21,8 @@ export class ProductModel {
     quantity: number,
     category: string,
     rating?: number,
-    isNew?: boolean
+    isNew?: boolean,
+    sale?: number
   ) {
     this.id = id;
     this.title = title;
@@ -31,5 +34,7 @@ export class ProductModel {
     this.category = category;
     this.rating = rating || 0;
     this.isNew = isNew || false;
+    this.isSale = !!sale || false;
+    this.sale = sale || 0;
   }
 }

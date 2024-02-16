@@ -30,19 +30,24 @@
       <mat-expansion-panel-header>
         <mat-panel-title> Price </mat-panel-title>
       </mat-expansion-panel-header>
-      <input
-        matInput
-        type="number"
-        #lowPrice
-        (change)="onPriceFilterChange(lowPrice.value, highPrice.value)"
-      />
-      -
-      <input
-        matInput
-        type="number"
-        #highPrice
-        (change)="onPriceFilterChange(lowPrice.value, highPrice.value)"
-      />
+      <mat-form-field>
+        <mat-label>Min</mat-label>
+        <input
+          matInput
+          type="number"
+          #lowPrice
+          (change)="onPriceFilterChange(lowPrice.value, highPrice.value)"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Max</mat-label>
+        <input
+          matInput
+          type="number"
+          #highPrice
+          (change)="onPriceFilterChange(lowPrice.value, highPrice.value)"
+        />
+      </mat-form-field>
     </mat-expansion-panel>
   </mat-accordion>
 </div>

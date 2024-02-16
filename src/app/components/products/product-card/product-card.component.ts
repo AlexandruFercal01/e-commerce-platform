@@ -28,4 +28,12 @@ export class ProductCardComponent {
   addToCart(product: ProductModel) {
     this.cartService.addItemToCart(product);
   }
+
+  getPrice(product: ProductModel) {
+    if (!!product.sale) {
+      return (product.price - (product.price * product.sale!) / 100).toFixed(2);
+    } else {
+      return product.price.toFixed(2);
+    }
+  }
 }

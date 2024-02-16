@@ -4,7 +4,20 @@
     [routerLink]="['/products', product.id]"
     src="{{ product.image }}"
   />
-  <mat-chip class="chip" *ngIf="product.isNew">NEW</mat-chip>
+  <mat-chip-set class="chips">
+    <mat-chip
+      class="chip"
+      style="background-color: orange"
+      *ngIf="product.isNew"
+      >NEW</mat-chip
+    >
+    <mat-chip
+      class="chip"
+      style="background-color: yellow; color: white !important"
+      *ngIf="!!product.sale"
+      >{{ product.sale }}%</mat-chip
+    >
+  </mat-chip-set>
   <mat-card-header
     ><mat-card-title [routerLink]="['/products', product.id]">{{
       product.title
@@ -12,7 +25,13 @@
   </mat-card-header>
 
   <mat-card-content align="start">
-    <h4>{{ product.price }} $</h4>
+    <div style="display: flex; flex-direction: row">
+      <h4>{{ getPrice(product) }} $</h4>
+      <br />
+      <h4 style="text-decoration: line-through; color: gray">
+        {{ !!product.sale ? product.price + "$" : "" }}
+      </h4>
+    </div>
     <p style="color: gray">
       {{ product.available ? "In stock" : "Out of stock" }}
     </p>
