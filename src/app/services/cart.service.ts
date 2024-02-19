@@ -13,14 +13,14 @@ export class CartService {
     return this.cartItems;
   }
 
-  addItemToCart(product: ProductModel) {
+  addItemToCart(product: ProductModel, quantity: number) {
     if (product.quantity > 0) {
-      product.quantity--;
       const isInCart = this.cartItems.some((item) => item.id === product.id);
       if (isInCart) {
-        this.cartItems.find((item) => item.id === product.id)!.quantity++;
+        this.cartItems.find((item) => item.id === product.id)!.quantity +=
+          quantity;
       } else {
-        this.cartItems.push({ ...product, quantity: 1 }); // Add the new product to the cart
+        this.cartItems.push({ ...product, quantity: quantity }); // Add the new product to the cart
         this.cartCount.next(this.cartItems.length); // Update the cart count
       }
     } else {

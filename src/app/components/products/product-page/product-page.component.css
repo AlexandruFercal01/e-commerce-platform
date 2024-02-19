@@ -1,0 +1,52 @@
+.container {
+  height: calc(100vh - 80px);
+  width: 80%;
+  margin: 0 auto;
+}
+
+.product-essential {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.product-info {
+  width: 300px;
+  margin-top: 50px;
+}
+
+img {
+  height: 500px;
+  width: 500px;
+  margin-top: 50px;
+}
+
+.filledStar {
+  color: orange;
+}
+
+.emptyStar {
+  color: gray;
+}
+
+.counter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  background-color: gainsboro;
+  border-radius: 30px;
+  padding: 5px 0;
+}
+
+.counter h4 {
+  margin-bottom: 0px;
+}
+
+.product-details {
+  margin: 10px 30px;
+}
+
+.expansion-panel {
+  margin: 10px 0;
+}

@@ -1,3 +1,5 @@
+import { ReviewModel } from './review.model';
+
 export class ProductModel {
   id: string;
   title: string;
@@ -8,6 +10,7 @@ export class ProductModel {
   available: boolean;
   category: string;
   rating?: number;
+  reviews?: ReviewModel[];
   isNew?: boolean;
   isSale?: boolean;
   sale?: number;
@@ -21,6 +24,7 @@ export class ProductModel {
     quantity: number,
     category: string,
     rating?: number,
+    reviews?: ReviewModel[],
     isNew?: boolean,
     sale?: number
   ) {
@@ -33,6 +37,7 @@ export class ProductModel {
     this.available = this.quantity > 0;
     this.category = category;
     this.rating = rating || 0;
+    this.reviews = reviews || [];
     this.isNew = isNew || false;
     this.isSale = !!sale || false;
     this.sale = sale || 0;

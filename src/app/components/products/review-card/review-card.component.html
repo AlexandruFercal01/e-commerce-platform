@@ -1,0 +1,19 @@
+<mat-card class="review-card">
+  <mat-card-header>
+    <mat-card-title>{{ review.email }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngIf="review.rating">
+      <mat-icon class="filledStar" *ngFor="let i of createRange(review.rating!)"
+        >star</mat-icon
+      >
+      <mat-icon
+        class="emptyStar"
+        *ngFor="let i of createRange(5 - review.rating!)"
+      >
+        star
+      </mat-icon>
+    </div>
+    <p>{{ review.comment }}</p>
+  </mat-card-content>
+</mat-card>

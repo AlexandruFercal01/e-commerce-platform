@@ -13,6 +13,7 @@ export class AddedProductCardComponent {
   constructor(private cartService: CartService) {}
 
   onDelete(product: ProductModel) {
+    product.quantity += this.product.quantity;
     this.cartService.deleteItemFromCart(product);
   }
 

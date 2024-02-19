@@ -18,6 +18,18 @@ export class ProductsService {
       category: 'Cleaners',
       rating: 5,
       isNew: true,
+      reviews: [
+        {
+          email: 'alex@me.com',
+          comment: 'Great product',
+          rating: 4,
+        },
+        {
+          email: 'raul@me.com',
+          comment: 'Great product and easy to use',
+          rating: 5,
+        },
+      ],
     },
     {
       id: '2',
@@ -218,6 +230,10 @@ export class ProductsService {
 
   getProducts(): ProductModel[] {
     return this.products.slice();
+  }
+
+  getProductById(id: string) {
+    return this.products.find((product) => product.id === id)!;
   }
 
   getNewProducts(): ProductModel[] {

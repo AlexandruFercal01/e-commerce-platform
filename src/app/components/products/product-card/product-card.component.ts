@@ -26,7 +26,8 @@ export class ProductCardComponent {
   }
 
   addToCart(product: ProductModel) {
-    this.cartService.addItemToCart(product);
+    product.quantity--;
+    this.cartService.addItemToCart(product, 1);
   }
 
   getPrice(product: ProductModel) {

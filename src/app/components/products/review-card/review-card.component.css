@@ -1,0 +1,11 @@
+.filledStar {
+  color: orange;
+}
+
+.emptyStar {
+  color: gray;
+}
+
+.review-card {
+  margin: 10px;
+}

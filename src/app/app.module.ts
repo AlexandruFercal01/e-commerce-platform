@@ -23,6 +23,8 @@ import { CartService } from './services/cart.service';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatChipsModule } from '@angular/material/chips';
+import { ProductPageComponent } from './components/products/product-page/product-page.component';
+import { ReviewCardComponent } from './components/products/review-card/review-card.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { MatChipsModule } from '@angular/material/chips';
     ProductsFiltersComponent,
     CartComponent,
     AddedProductCardComponent,
+    ProductPageComponent,
+    ReviewCardComponent,
   ],
   imports: [
     BrowserModule,
