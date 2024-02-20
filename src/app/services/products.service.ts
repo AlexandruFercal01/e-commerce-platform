@@ -236,6 +236,11 @@ export class ProductsService {
     return this.products.find((product) => product.id === id)!;
   }
 
+  increaseQuantityOfProduct(id: string, quantity: number) {
+    console.log(quantity);
+    this.products.find((item) => item.id === id)!.quantity += quantity;
+  }
+
   getNewProducts(): ProductModel[] {
     return this.products.filter((product) => product.isNew === true).slice();
   }

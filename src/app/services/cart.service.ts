@@ -9,6 +9,8 @@ export class CartService {
   items = new Subject<ProductModel[]>();
   cartCount = new Subject<number>();
 
+  constructor(private productsService: ProductsService) {}
+
   getItems(): ProductModel[] {
     return this.cartItems;
   }
@@ -40,6 +42,10 @@ export class CartService {
   }
 
   deleteItemFromCart(product: ProductModel) {
+    this.productsService.increaseQuantityOfProduct(
+      product.id,
+      this.cartItems.find((item) => item.id === product.id)!.quantity / 2
+    );
     this.cartItems = this.cartItems.filter((item) => item.id !== product.id);
     this.items.next(this.cartItems);
     this.cartCount.next(this.cartItems.length);
