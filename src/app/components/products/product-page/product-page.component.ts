@@ -47,4 +47,12 @@ export class ProductPageComponent {
       this.quantity--;
     }
   }
+
+  getPrice(product: ProductModel) {
+    if (!!product.sale) {
+      return (product.price - (product.price * product.sale!) / 100).toFixed(2);
+    } else {
+      return product.price.toFixed(2);
+    }
+  }
 }

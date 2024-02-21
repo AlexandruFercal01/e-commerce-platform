@@ -23,8 +23,11 @@ import { CartService } from './services/cart.service';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSelectModule } from '@angular/material/select';
 import { ProductPageComponent } from './components/products/product-page/product-page.component';
 import { ReviewCardComponent } from './components/products/review-card/review-card.component';
+import { FormsModule } from '@angular/forms';
+import { FilterService } from './services/filter.service';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,7 @@ import { ReviewCardComponent } from './components/products/review-card/review-ca
     ReviewCardComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
@@ -53,8 +57,14 @@ import { ReviewCardComponent } from './components/products/review-card/review-ca
     MatInputModule,
     MatFormField,
     MatChipsModule,
+    MatSelectModule,
   ],
-  providers: [provideAnimationsAsync(), ProductsService, CartService],
+  providers: [
+    provideAnimationsAsync(),
+    ProductsService,
+    CartService,
+    FilterService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

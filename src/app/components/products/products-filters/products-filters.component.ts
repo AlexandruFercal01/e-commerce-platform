@@ -1,5 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { ProductsService } from '../../../services/products.service';
+import { FilterCriteria, SortOptions } from '../../../models/filter-criteria';
+import { filter } from 'rxjs';
+import { FilterService } from '../../../services/filter.service';
 
 @Component({
   selector: 'app-products-filters',
@@ -8,21 +11,22 @@ import { ProductsService } from '../../../services/products.service';
 })
 export class ProductsFiltersComponent {
   panelOpenState: boolean = false;
+  filterCriteria: FilterCriteria = {};
 
-  constructor(private productsService: ProductsService) {}
+  constructor(
+    private productsService: ProductsService,
+    private filterService: FilterService
+  ) {}
 
-  onCategoryFilterChange(category: string) {
-    return this.productsService.onFilterByCategory(category);
+  onFilterUpdate(filterCriteria: FilterCriteria) {
+    this.filterService.updateFilterCriteria(filterCriteria);
   }
 
-  onPriceFilterChange(lowPrice: string, highPrice: string) {
-    return this.productsService.onFilterByPrice(
-      Number.parseInt(lowPrice),
-      Number.parseInt(highPrice)
-    );
+  onRemoveFilters() {
+    this.filterService.onRemoveFilters();
   }
 
-  onRatingFilterChange(rating: number) {
-    return this.productsService.onFilterByRating(rating);
+  onSortUpdate(sortOptions: string) {
+    this.productsService.onSort(sortOptions as SortOptions);
   }
 }

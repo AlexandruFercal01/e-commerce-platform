@@ -5,7 +5,7 @@
       <h1>{{ product.title }}</h1>
       <h3>{{ product.description }}</h3>
       <!-- <h2>{{ product.price }}$</h2> -->
-      <mat-chip>{{ product.price }}$</mat-chip>
+      <mat-chip>{{ getPrice(product) }}$</mat-chip>
       <div class="counter">
         <button
           mat-icon-button

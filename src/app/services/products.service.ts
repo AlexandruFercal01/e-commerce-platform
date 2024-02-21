@@ -1,6 +1,8 @@
-import { Subject } from 'rxjs';
+import { Subject, filter } from 'rxjs';
 import { ProductModel } from '../models/products.model';
 import { Injectable } from '@angular/core';
+import { FilterCriteria, SortOptions } from '../models/filter-criteria';
+import { FilterService } from './filter.service';
 
 @Injectable()
 export class ProductsService {
@@ -43,6 +45,8 @@ export class ProductsService {
       available: true,
       category: 'Cleaners',
       rating: 4,
+      sale: 15,
+      isSale: true,
     },
     {
       id: '3',
@@ -96,6 +100,7 @@ export class ProductsService {
       category: 'Interior',
       quantity: 6,
       isNew: true,
+      rating: 4,
     },
     {
       id: '7',
@@ -110,6 +115,8 @@ export class ProductsService {
       category: 'Interior',
       rating: 4,
       isNew: true,
+      sale: 30,
+      isSale: true,
     },
     {
       id: '8',
@@ -122,6 +129,7 @@ export class ProductsService {
       available: true,
       category: 'Exterior',
       quantity: 9,
+      rating: 0,
     },
     {
       id: '9',
@@ -133,6 +141,7 @@ export class ProductsService {
       available: true,
       category: 'Exterior',
       quantity: 10,
+      rating: 0,
     },
     {
       id: '10',
@@ -161,6 +170,7 @@ export class ProductsService {
       quantity: 15,
       sale: 20,
       isNew: true,
+      rating: 5,
     },
     {
       id: '12',
@@ -199,6 +209,8 @@ export class ProductsService {
       quantity: 21,
       rating: 5,
       isNew: true,
+      sale: 10,
+      isSale: true,
     },
     {
       id: '15',
@@ -210,6 +222,7 @@ export class ProductsService {
       available: true,
       category: 'Exterior',
       quantity: 21,
+      rating: 0,
     },
     {
       id: '16',
@@ -227,6 +240,17 @@ export class ProductsService {
   ];
   filteredProducts = new Subject<ProductModel[]>();
   productsFiltered = this.products;
+  criteria: FilterCriteria = {};
+
+  constructor(private filterService: FilterService) {
+    this.filterService.filter.subscribe((filterCriteria) => {
+      this.onFilter(filterCriteria);
+    });
+  }
+
+  ngOnChanges() {
+    console.log(this.productsFiltered);
+  }
 
   getProducts(): ProductModel[] {
     return this.products.slice();
@@ -249,37 +273,40 @@ export class ProductsService {
     console.log(this.productsFiltered);
   }
 
-  onFilterByCategory(category: string) {
-    this.filteredProducts.next(
-      this.productsFiltered.filter(
-        (products: ProductModel) => products.category === category
-      )
-    );
-  }
-
-  onFilterByPrice(lowPrice: number, highPrice: number) {
+  onFilter(filters: FilterCriteria) {
     this.filteredProducts.next(
       this.productsFiltered.filter((product) => {
-        if (lowPrice && highPrice) {
-          return product.price >= lowPrice && product.price <= highPrice;
-        } else if (lowPrice) {
-          return product.price >= lowPrice;
-        } else if (highPrice) {
-          return product.price <= highPrice;
-        } else {
-          return product;
-        }
-      })
-    );
-  }
+        for (const key of Object.keys(filters)) {
+          const filterValue = filters[key as keyof FilterCriteria];
+          const productValue = product[key as keyof ProductModel];
 
-  onFilterByRating(rating: number) {
-    this.filteredProducts.next(
-      this.productsFiltered.filter((product) => product.rating === rating)
+          if (productValue !== filterValue) {
+            return false;
+          }
+        }
+        return true;
+      })
     );
   }
 
   onRemoveFilter() {
     this.filteredProducts.next(this.products);
+  }
+
+  onSort(sortOptions: SortOptions) {
+    this.filteredProducts.next(
+      this.productsFiltered.sort((a, b) => {
+        if (sortOptions === SortOptions.PRICE_DESC) {
+          return b.price - a.price;
+        } else if (sortOptions === SortOptions.PRICE_ASC) {
+          return a.price - b.price;
+        } else if (sortOptions === SortOptions.RATING_DESC) {
+          return b.rating! - a.rating!;
+        } else if (sortOptions === SortOptions.RATING_ASC) {
+          return a.rating! - b.rating!;
+        }
+        return 0;
+      })
+    );
   }
 }

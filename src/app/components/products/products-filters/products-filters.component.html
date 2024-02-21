@@ -1,3 +1,7 @@
+<h3 style="color: gray">Filters</h3>
+<div style="margin-top: 20px">
+  <button mat-raised-button (click)="onRemoveFilters()">Clear Filters</button>
+</div>
 <div style="margin-top: 20px">
   <mat-accordion>
     <mat-expansion-panel style="width: 300px">
@@ -7,17 +11,17 @@
       <mat-radio-group style="display: flex; flex-direction: column">
         <mat-radio-button
           value="interior"
-          (click)="onCategoryFilterChange('Interior')"
+          (click)="onFilterUpdate({ category: 'Interior' })"
           >Interior</mat-radio-button
         >
         <mat-radio-button
           value="exterior"
-          (click)="onCategoryFilterChange('Exterior')"
+          (click)="onFilterUpdate({ category: 'Exterior' })"
           >Exterior</mat-radio-button
         >
         <mat-radio-button
           value="cleaners"
-          (click)="onCategoryFilterChange('Cleaners')"
+          (click)="onFilterUpdate({ category: 'Cleaners' })"
           >Cleaners</mat-radio-button
         >
       </mat-radio-group>
@@ -28,57 +32,30 @@
   <mat-accordion>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <mat-panel-title> Price </mat-panel-title>
-      </mat-expansion-panel-header>
-      <mat-form-field>
-        <mat-label>Min</mat-label>
-        <input
-          matInput
-          type="number"
-          #lowPrice
-          (change)="onPriceFilterChange(lowPrice.value, highPrice.value)"
-        />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Max</mat-label>
-        <input
-          matInput
-          type="number"
-          #highPrice
-          (change)="onPriceFilterChange(lowPrice.value, highPrice.value)"
-        />
-      </mat-form-field>
-    </mat-expansion-panel>
-  </mat-accordion>
-</div>
-<div style="margin-top: 20px">
-  <mat-accordion>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
         <mat-panel-title> Rating </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-radio-group style="display: flex; flex-direction: column">
-        <mat-radio-button value="5" (change)="onRatingFilterChange(5)">
+        <mat-radio-button value="5" (change)="onFilterUpdate({ rating: 5 })">
           <mat-icon style="color: orange" *ngFor="let i of [1, 2, 3, 4, 5]"
             >star</mat-icon
           ></mat-radio-button
         >
-        <mat-radio-button value="4" (change)="onRatingFilterChange(4)"
+        <mat-radio-button value="4" (change)="onFilterUpdate({ rating: 4 })"
           ><mat-icon style="color: orange" *ngFor="let i of [1, 2, 3, 4]"
             >star</mat-icon
           ></mat-radio-button
         >
-        <mat-radio-button value="3" (change)="onRatingFilterChange(3)"
+        <mat-radio-button value="3" (change)="onFilterUpdate({ rating: 3 })"
           ><mat-icon style="color: orange" *ngFor="let i of [1, 2, 3]"
             >star</mat-icon
           ></mat-radio-button
         >
-        <mat-radio-button value="2" (change)="onRatingFilterChange(2)"
+        <mat-radio-button value="2" (change)="onFilterUpdate({ rating: 2 })"
           ><mat-icon style="color: orange" *ngFor="let i of [1, 2]"
             >star</mat-icon
           ></mat-radio-button
         >
-        <mat-radio-button value="1" (change)="onRatingFilterChange(1)"
+        <mat-radio-button value="1" (change)="onFilterUpdate({ rating: 1 })"
           ><mat-icon style="color: orange" *ngFor="let i of [1]"
             >star</mat-icon
           ></mat-radio-button
@@ -87,3 +64,45 @@
     </mat-expansion-panel>
   </mat-accordion>
 </div>
+<div style="margin-top: 20px">
+  <mat-accordion>
+    <mat-expansion-panel style="width: 300px">
+      <mat-expansion-panel-header>
+        <mat-panel-title> Others </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-radio-group style="display: flex; flex-direction: column">
+        <mat-radio-button
+          value="sale"
+          (click)="onFilterUpdate({ isSale: true })"
+          >Sale</mat-radio-button
+        >
+        <mat-radio-button
+          value="exterior"
+          (click)="onFilterUpdate({ isNew: true })"
+          >New</mat-radio-button
+        >
+      </mat-radio-group>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<br />
+<h3 style="color: gray">Sorting</h3>
+<mat-form-field>
+  <mat-label>Choose an option</mat-label>
+  <mat-select>
+    <mat-option value="option1" (onSelectionChange)="onSortUpdate('price_asc')"
+      >Price Ascending</mat-option
+    >
+    <mat-option value="option2" (onSelectionChange)="onSortUpdate('price_desc')"
+      >Price Descending
+    </mat-option>
+    <mat-option value="option3" (onSelectionChange)="onSortUpdate('rating_asc')"
+      >Rating Ascending</mat-option
+    >
+    <mat-option
+      value="option4"
+      (onSelectionChange)="onSortUpdate('rating_desc')"
+      >Rating Descending</mat-option
+    >
+  </mat-select>
+</mat-form-field>
