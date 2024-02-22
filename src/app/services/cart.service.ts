@@ -33,11 +33,13 @@ export class CartService {
 
   decreaseQuantityOfProduct(product: ProductModel) {
     product.quantity--;
+    this.productsService.increaseQuantityOfProduct(product.id, 1);
     console.log(this.cartItems);
   }
 
   increaseQuantityOfProduct(product: ProductModel) {
     product.quantity++;
+    this.productsService.decreaseQuantityOfProduct(product.id, 1);
     console.log(this.cartItems);
   }
 

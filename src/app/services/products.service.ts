@@ -265,6 +265,10 @@ export class ProductsService {
     this.products.find((item) => item.id === id)!.quantity += quantity;
   }
 
+  decreaseQuantityOfProduct(id: string, quantity: number) {
+    this.products.find((item) => item.id === id)!.quantity -= quantity;
+  }
+
   getNewProducts(): ProductModel[] {
     return this.products.filter((product) => product.isNew === true).slice();
   }
