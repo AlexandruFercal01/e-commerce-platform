@@ -35,7 +35,10 @@ import { DialogComponent } from './components/admin/dialog/dialog.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogService } from './services/dialog.service';
-import { SnackbarComponent } from './components/snackbar/snackbar.component';
+
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,7 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
     AdminProductCardComponent,
     AddEditFormComponent,
     DialogComponent,
-    SnackbarComponent,
+    AboutComponent,
   ],
   imports: [
     FormsModule,
@@ -73,6 +76,8 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
     MatChipsModule,
     MatSelectModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
   ],
   providers: [
     provideAnimationsAsync(),

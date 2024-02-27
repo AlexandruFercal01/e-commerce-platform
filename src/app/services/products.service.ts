@@ -1,4 +1,4 @@
-import { Subject, filter, map } from 'rxjs';
+import { Observable, Subject, filter, map } from 'rxjs';
 import { ProductModel } from '../models/products.model';
 import { Injectable } from '@angular/core';
 import { FilterCriteria, SortOptions } from '../models/filter-criteria';
@@ -242,7 +242,11 @@ export class ProductsService {
   filteredProducts = new Subject<ProductModel[]>();
   criteria: FilterCriteria = {};
 
-  constructor(private filterService: FilterService, private http: HttpClient) {
+  constructor(
+    private filterService: FilterService,
+
+    private http: HttpClient
+  ) {
     this.filterService.filter.subscribe((filterCriteria) => {
       this.onFilter(filterCriteria);
     });
@@ -315,8 +319,8 @@ export class ProductsService {
 
   // API CALLS HERE
 
-  getProducts() {
-    this.http
+  getProducts(): Observable<ProductModel[]> {
+    const products$ = this.http
       .get(
         'https://e-commerce-22682-default-rtdb.europe-west1.firebasedatabase.app/products.json'
       )
@@ -330,13 +334,8 @@ export class ProductsService {
           });
           return products;
         })
-      )
-      .subscribe((data) => {
-        this.products = Object.values(data) as ProductModel[];
-
-        this.filteredProducts.next(this.products);
-        console.log(this.products);
-      });
+      );
+    return products$;
   }
 
   postProduct(product: ProductModel) {

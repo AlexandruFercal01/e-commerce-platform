@@ -20,6 +20,7 @@ import { DialogService } from '../../services/dialog.service';
 })
 export class AdminComponent {
   products: ProductModel[] = [];
+  isLoading: boolean = false;
 
   constructor(
     private productsService: ProductsService,
@@ -34,7 +35,13 @@ export class AdminComponent {
   }
 
   ngOnInit() {
-    this.productsService.getProducts();
+    this.isLoading = true;
+    this.productsService.getProducts().subscribe((data) => {
+      this.products = Object.values(data) as ProductModel[];
+
+      this.productsService.filteredProducts.next(this.products);
+      this.isLoading = false;
+    });
   }
 
   openDialog() {

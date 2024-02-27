@@ -1,9 +1,12 @@
-<div class="addContainer">
+<div class="addContainer" *ngIf="!isLoading">
   <button mat-raised-button (click)="openDialog()">Add Product</button>
 </div>
-<div class="adminContainer">
+<div class="adminContainer" *ngIf="!isLoading">
   <app-admin-product-card
     *ngFor="let product of products"
     [product]="product"
   ></app-admin-product-card>
+</div>
+<div class="loader" *ngIf="isLoading">
+  <mat-spinner color="warn"></mat-spinner>
 </div>

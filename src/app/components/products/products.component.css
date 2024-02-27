@@ -21,3 +21,12 @@
   padding: 10px;
   background-color: gainsboro;
 }
+
+.loader {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 80px);
+}
