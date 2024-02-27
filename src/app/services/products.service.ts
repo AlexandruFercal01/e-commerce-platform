@@ -1,8 +1,9 @@
-import { Subject, filter } from 'rxjs';
+import { Subject, filter, map } from 'rxjs';
 import { ProductModel } from '../models/products.model';
 import { Injectable } from '@angular/core';
 import { FilterCriteria, SortOptions } from '../models/filter-criteria';
 import { FilterService } from './filter.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class ProductsService {
@@ -239,21 +240,16 @@ export class ProductsService {
     },
   ];
   filteredProducts = new Subject<ProductModel[]>();
-  productsFiltered = this.products;
   criteria: FilterCriteria = {};
 
-  constructor(private filterService: FilterService) {
+  constructor(private filterService: FilterService, private http: HttpClient) {
     this.filterService.filter.subscribe((filterCriteria) => {
       this.onFilter(filterCriteria);
     });
   }
 
   ngOnChanges() {
-    console.log(this.productsFiltered);
-  }
-
-  getProducts(): ProductModel[] {
-    return this.products.slice();
+    console.log(this.products);
   }
 
   getProductById(id: string) {
@@ -274,12 +270,12 @@ export class ProductsService {
   }
 
   onAddToCart(product: ProductModel) {
-    console.log(this.productsFiltered);
+    console.log(this.products);
   }
 
   onFilter(filters: FilterCriteria) {
     this.filteredProducts.next(
-      this.productsFiltered.filter((product) => {
+      this.products.filter((product) => {
         for (const key of Object.keys(filters)) {
           const filterValue = filters[key as keyof FilterCriteria];
           const productValue = product[key as keyof ProductModel];
@@ -291,6 +287,8 @@ export class ProductsService {
         return true;
       })
     );
+
+    console.log(this.products);
   }
 
   onRemoveFilter() {
@@ -299,7 +297,7 @@ export class ProductsService {
 
   onSort(sortOptions: SortOptions) {
     this.filteredProducts.next(
-      this.productsFiltered.sort((a, b) => {
+      this.products.sort((a, b) => {
         if (sortOptions === SortOptions.PRICE_DESC) {
           return b.price - a.price;
         } else if (sortOptions === SortOptions.PRICE_ASC) {
@@ -312,5 +310,64 @@ export class ProductsService {
         return 0;
       })
     );
+    console.log(this.products);
+  }
+
+  // API CALLS HERE
+
+  getProducts() {
+    this.http
+      .get(
+        'https://e-commerce-22682-default-rtdb.europe-west1.firebasedatabase.app/products.json'
+      )
+      .pipe(
+        map((data) => {
+          const products: ProductModel[] = [];
+          Object.entries(data).forEach(([key, value]) => {
+            if (data.hasOwnProperty(key)) {
+              products.push({ ...value, id: key });
+            }
+          });
+          return products;
+        })
+      )
+      .subscribe((data) => {
+        this.products = Object.values(data) as ProductModel[];
+
+        this.filteredProducts.next(this.products);
+        console.log(this.products);
+      });
+  }
+
+  postProduct(product: ProductModel) {
+    this.http
+      .post(
+        'https://e-commerce-22682-default-rtdb.europe-west1.firebasedatabase.app/products.json',
+        product
+      )
+      .subscribe(() => {
+        this.getProducts();
+      });
+  }
+
+  patchProduct(product: ProductModel) {
+    this.http
+      .patch(
+        `https://e-commerce-22682-default-rtdb.europe-west1.firebasedatabase.app/products/${product.id}.json`,
+        product
+      )
+      .subscribe(() => {
+        this.getProducts();
+      });
+  }
+
+  deleteProduct(id: string) {
+    this.http
+      .delete(
+        `https://e-commerce-22682-default-rtdb.europe-west1.firebasedatabase.app/products/${id}.json`
+      )
+      .subscribe(() => {
+        this.getProducts();
+      });
   }
 }

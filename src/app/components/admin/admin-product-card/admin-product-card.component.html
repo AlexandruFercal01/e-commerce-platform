@@ -1,0 +1,23 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>{{ product.title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="content">
+      <img src="{{ product.image }}" width="200" height="200" />
+      <h4>Actions</h4>
+      <div>
+        <button mat-raised-button (click)="openEditDialog(product)">
+          Edit
+        </button>
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="deleteProduct(product.id)"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

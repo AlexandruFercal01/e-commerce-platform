@@ -28,6 +28,14 @@ import { ProductPageComponent } from './components/products/product-page/product
 import { ReviewCardComponent } from './components/products/review-card/review-card.component';
 import { FormsModule } from '@angular/forms';
 import { FilterService } from './services/filter.service';
+import { AdminComponent } from './components/admin/admin.component';
+import { AdminProductCardComponent } from './components/admin/admin-product-card/admin-product-card.component';
+import { AddEditFormComponent } from './components/admin/add-edit-form/add-edit-form.component';
+import { DialogComponent } from './components/admin/dialog/dialog.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http';
+import { DialogService } from './services/dialog.service';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
 
 @NgModule({
   declarations: [
@@ -42,11 +50,17 @@ import { FilterService } from './services/filter.service';
     AddedProductCardComponent,
     ProductPageComponent,
     ReviewCardComponent,
+    AdminComponent,
+    AdminProductCardComponent,
+    AddEditFormComponent,
+    DialogComponent,
+    SnackbarComponent,
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     MatIconModule,
     MatCardModule,
     MatButtonModule,
@@ -58,12 +72,14 @@ import { FilterService } from './services/filter.service';
     MatFormField,
     MatChipsModule,
     MatSelectModule,
+    MatDialogModule,
   ],
   providers: [
     provideAnimationsAsync(),
     ProductsService,
     CartService,
     FilterService,
+    DialogService,
   ],
   bootstrap: [AppComponent],
 })
