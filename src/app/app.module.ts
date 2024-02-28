@@ -39,6 +39,7 @@ import { DialogService } from './services/dialog.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { AboutComponent } from './components/about/about.component';
+import { AuthComponent } from './components/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { AboutComponent } from './components/about/about.component';
     AddEditFormComponent,
     DialogComponent,
     AboutComponent,
+    AuthComponent,
   ],
   imports: [
     FormsModule,

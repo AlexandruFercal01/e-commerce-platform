@@ -6,7 +6,7 @@
     <a class="nav-link" routerLink="/home"> Home </a>
     <a class="nav-link" routerLink="/products"> Products </a>
     <a class="nav-link" routerLink="/about"> About </a>
-    <a class="nav-link" routerLink="/admin"> Admin </a>
+    <a *ngIf="checkIfAdmin()" class="nav-link" routerLink="/admin"> Admin </a>
   </div>
   <div class="icons">
     <button mat-icon-button>

@@ -23,7 +23,7 @@ export class AddEditFormComponent {
     private dialogService: DialogService
   ) {}
 
-  ngAfterViewChecked() {
+  ngAfterViewInit() {
     setTimeout(() => {
       this.form.setValue({
         title: this.dialogService.product?.title,
@@ -38,28 +38,28 @@ export class AddEditFormComponent {
   }
 
   onSubmit() {
-    // const product = new ProductModel(
-    //   this.form.value.title,
-    //   this.form.value.description,
-    //   this.form.value.image,
-    //   this.form.value.price,
-    //   this.form.value.quantity,
-    //   this.form.value.category,
-    //   [],
-    //   false,
-    //   this.form.value.sale
-    // );
-    // if (this.form.valid) {
-    //   if (this.dialogService.isEdit) {
-    //     this.productsService.patchProduct(product);
-    //     this.dialogService.isEdit = false;
-    //   } else {
-    //     this.productsService.postProduct(product);
-    //   }
-    //   this.form.reset();
-    // }
-    this.productsService.products.map((product) => {
-      this.productsService.postProduct(product);
-    });
+    const product = new ProductModel(
+      this.form.value.title,
+      this.form.value.description,
+      this.form.value.image,
+      this.form.value.price,
+      this.form.value.quantity,
+      this.form.value.category,
+      [],
+      false,
+      this.form.value.sale
+    );
+    if (this.form.valid) {
+      if (this.dialogService.isEdit) {
+        this.productsService.patchProduct(product);
+        this.dialogService.isEdit = false;
+      } else {
+        this.productsService.postProduct(product);
+      }
+      this.form.reset();
+    }
+    // this.productsService.products.map((product) => {
+    //   this.productsService.postProduct(product);
+    // });
   }
 }

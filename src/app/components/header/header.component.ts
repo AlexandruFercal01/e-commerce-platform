@@ -17,4 +17,12 @@ export class HeaderComponent {
   openCart() {
     this.router.navigate(['/cart']);
   }
+
+  checkIfAdmin() {
+    if (localStorage.getItem('admin') == 'true') {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

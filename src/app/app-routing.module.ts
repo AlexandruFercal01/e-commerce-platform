@@ -6,6 +6,8 @@ import { ProductPageComponent } from './components/products/product-page/product
 import { CartComponent } from './components/cart/cart.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AboutComponent } from './components/about/about.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { AuthGuard } from './components/auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -24,8 +26,10 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
+    canActivate: [AuthGuard],
   },
   { path: 'about', component: AboutComponent },
+  { path: 'login', component: AuthComponent },
 ];
 
 @NgModule({

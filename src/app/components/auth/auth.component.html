@@ -1,0 +1,87 @@
+<div
+  style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+  "
+>
+  <div>
+    <div *ngIf="error">
+      <p>{{ error }}</p>
+    </div>
+    <div *ngIf="isLoading" style="text-align: center">
+      <mat-spinner></mat-spinner>
+    </div>
+    <form
+      #authForm="ngForm"
+      (ngSubmit)="onSubmit(authForm)"
+      *ngIf="!isLoading"
+      style="
+        height: 400px;
+        text-align: center;
+        border-radius: 10px;
+        padding: 40px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+          rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        display: flex;
+        flex-direction: column;
+      "
+    >
+      <div class="form-group">
+        <mat-form-field>
+          <mat-label for="email">E-Mail</mat-label>
+          <input
+            matInput
+            type="email"
+            id="email"
+            class="form-control"
+            ngModel
+            name="email"
+            required
+            email
+          />
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <mat-label for="password">Password</mat-label>
+          <input
+            matInput
+            type="password"
+            id="password"
+            class="form-control"
+            ngModel
+            name="password"
+            required
+            minlength="6"
+          />
+        </mat-form-field>
+      </div>
+      <div>
+        <button
+          mat-raised-button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="!authForm.valid"
+        >
+          {{ isLoginMode ? "Login" : "Sign Up" }}
+        </button>
+        |
+        <button
+          mat-raised-button
+          class="btn btn-primary"
+          (click)="onSwitchMode()"
+          type="button"
+        >
+          Switch to {{ isLoginMode ? "Sign Up" : "Login" }}
+        </button>
+      </div>
+      <p style="margin-top: 50px">or</p>
+      <button mat-raised-button (click)="onLogout()">Log Out</button>
+      <button mat-raised-button color="warn" style="margin: 30px 0">
+        Sign in with Google
+      </button>
+    </form>
+  </div>
+</div>
