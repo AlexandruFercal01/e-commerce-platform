@@ -47,7 +47,7 @@ export class AddEditFormComponent {
       this.form.value.quantity,
       this.form.value.category,
       [],
-      false,
+      true,
       this.form.value.sale
     );
     console.log(newProduct);

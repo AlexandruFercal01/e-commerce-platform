@@ -16,16 +16,16 @@
     <div class="counter">
       <button
         mat-icon-button
-        (click)="decreaseQuantityOfProduct(product)"
         [disabled]="product.quantity === 1"
+        (click)="decreaseQuantityOfProduct(product)"
       >
         <mat-icon>remove</mat-icon>
       </button>
       <h4>{{ product.quantity }}</h4>
       <button
         mat-icon-button
-        (click)="increaseQuantityOfProduct(product)"
         [disabled]="product.available === false"
+        (click)="increaseQuantityOfProduct(product)"
       >
         <mat-icon>add</mat-icon>
       </button>

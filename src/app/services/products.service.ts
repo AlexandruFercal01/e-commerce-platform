@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 import { FilterCriteria, SortOptions } from '../models/filter-criteria';
 import { FilterService } from './filter.service';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from './auth.service';
+import { ReviewModel } from '../models/review.model';
 
 @Injectable()
 export class ProductsService {
@@ -245,7 +247,7 @@ export class ProductsService {
 
   constructor(
     private filterService: FilterService,
-
+    private authService: AuthService,
     private http: HttpClient
   ) {
     this.filterService.filter.subscribe((filterCriteria) => {
@@ -259,16 +261,6 @@ export class ProductsService {
 
   getProductById(id: string) {
     return this.products.find((product) => product.id === id)!;
-  }
-
-  increaseQuantityOfProduct(id: string, quantity: number) {
-    console.log('products', this.products);
-    this.products.find((item) => item.id === id)!.quantity += quantity;
-  }
-
-  decreaseQuantityOfProduct(id: string, quantity: number) {
-    console.log('products', this.products);
-    this.products.find((item) => item.id === id)!.quantity -= quantity;
   }
 
   getNewProducts(): ProductModel[] {
@@ -332,6 +324,7 @@ export class ProductsService {
           Object.entries(data).forEach(([key, value]) => {
             if (data.hasOwnProperty(key)) {
               console.log(key);
+              console.log(value);
               products.push({ ...value, id: key });
             }
           });
@@ -340,7 +333,7 @@ export class ProductsService {
         })
       )
       .subscribe((data) => {
-        this.products = data;
+        this.products = data as ProductModel[];
         this.filteredProducts.next(this.products);
       });
   }
@@ -361,7 +354,7 @@ export class ProductsService {
     this.http
       .put(
         `https://e-commerce-22682-default-rtdb.europe-west1.firebasedatabase.app/products/${product.id}.json`,
-        { [product.id]: product }
+        { ...product }
       )
       .subscribe(() => {
         this.getProducts();

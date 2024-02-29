@@ -33,23 +33,16 @@ export class CartService {
   }
 
   decreaseQuantityOfProduct(product: ProductModel) {
-    product.quantity--;
-    this.productsService.increaseQuantityOfProduct(product.id, 1);
-    console.log('cartItems', this.cartItems);
+    // console.log('cartItems', this.cartItems);
+    // product.quantity--;
   }
 
   increaseQuantityOfProduct(product: ProductModel) {
-    product.quantity++;
-    this.productsService.decreaseQuantityOfProduct(product.id, 1);
-    console.log(this.cartItems);
-    console.log('cartItems', this.cartItems);
+    // product.quantity++;
+    // console.log('cartItems', this.cartItems);
   }
 
   deleteItemFromCart(product: ProductModel) {
-    this.productsService.increaseQuantityOfProduct(
-      product.id,
-      this.cartItems.find((item) => item.id === product.id)!.quantity / 2
-    );
     this.cartItems = this.cartItems.filter((item) => item.id !== product.id);
     this.items.next(this.cartItems);
     this.cartCount.next(this.cartItems.length);

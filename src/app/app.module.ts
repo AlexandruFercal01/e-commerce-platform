@@ -45,6 +45,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CheckoutService } from './services/checkout.service';
 import { MatTabsModule } from '@angular/material/tabs';
 import { OrdersComponent } from './components/orders/orders.component';
+import { OrdersService } from './services/orders.service';
 
 @NgModule({
   declarations: [
@@ -98,6 +99,7 @@ import { OrdersComponent } from './components/orders/orders.component';
     FilterService,
     DialogService,
     CheckoutService,
+    OrdersService,
   ],
   bootstrap: [AppComponent],
 })
