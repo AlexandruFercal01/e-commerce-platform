@@ -31,6 +31,7 @@ export class ProductModel {
   sale?: number;
 
   constructor(
+    id: string,
     title: string,
     description: string,
     image: string,
@@ -41,7 +42,7 @@ export class ProductModel {
     isNew?: boolean,
     sale?: number
   ) {
-    this.id = '';
+    this.id = id || '';
     this.title = title;
     this.description = description;
     this.image = image;

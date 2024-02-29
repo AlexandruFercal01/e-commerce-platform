@@ -21,11 +21,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.isLoading = true;
-    this.productsService.getProducts().subscribe((data) => {
-      this.products = Object.values(data) as ProductModel[];
-
-      this.productsService.filteredProducts.next(this.products);
-      this.isLoading = false;
-    });
+    this.productsService.getProducts();
+    this.isLoading = false;
   }
 }

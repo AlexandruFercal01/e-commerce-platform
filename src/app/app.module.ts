@@ -26,7 +26,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
 import { ProductPageComponent } from './components/products/product-page/product-page.component';
 import { ReviewCardComponent } from './components/products/review-card/review-card.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterService } from './services/filter.service';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminProductCardComponent } from './components/admin/admin-product-card/admin-product-card.component';
@@ -40,6 +40,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { AboutComponent } from './components/about/about.component';
 import { AuthComponent } from './components/auth/auth.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { CheckoutService } from './services/checkout.service';
+import { MatTabsModule } from '@angular/material/tabs';
+import { OrdersComponent } from './components/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -60,9 +65,12 @@ import { AuthComponent } from './components/auth/auth.component';
     DialogComponent,
     AboutComponent,
     AuthComponent,
+    CheckoutComponent,
+    OrdersComponent,
   ],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -80,6 +88,8 @@ import { AuthComponent } from './components/auth/auth.component';
     MatDialogModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
+    MatSlideToggleModule,
+    MatTabsModule,
   ],
   providers: [
     provideAnimationsAsync(),
@@ -87,6 +97,7 @@ import { AuthComponent } from './components/auth/auth.component';
     CartService,
     FilterService,
     DialogService,
+    CheckoutService,
   ],
   bootstrap: [AppComponent],
 })

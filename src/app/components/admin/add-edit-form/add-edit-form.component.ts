@@ -37,8 +37,9 @@ export class AddEditFormComponent {
     });
   }
 
-  onSubmit() {
-    const product = new ProductModel(
+  onSubmit(product: ProductModel) {
+    const newProduct = new ProductModel(
+      this.dialogService.product?.id!,
       this.form.value.title,
       this.form.value.description,
       this.form.value.image,
@@ -49,12 +50,13 @@ export class AddEditFormComponent {
       false,
       this.form.value.sale
     );
+    console.log(newProduct);
     if (this.form.valid) {
       if (this.dialogService.isEdit) {
-        this.productsService.patchProduct(product);
+        this.productsService.patchProduct(newProduct);
         this.dialogService.isEdit = false;
       } else {
-        this.productsService.postProduct(product);
+        this.productsService.postProduct(newProduct);
       }
       this.form.reset();
     }

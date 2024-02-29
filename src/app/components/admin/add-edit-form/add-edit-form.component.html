@@ -57,7 +57,7 @@
       color="primary"
       type="submit"
       [disabled]="form.invalid"
-      (click)="onSubmit()"
+      (click)="onSubmit(form.value)"
     >
       Submit
     </button>

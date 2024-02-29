@@ -8,6 +8,7 @@ export class CartService {
   cartItems: ProductModel[] = [];
   items = new Subject<ProductModel[]>();
   cartCount = new Subject<number>();
+  total: number = 0;
 
   constructor(private productsService: ProductsService) {}
 
@@ -34,13 +35,14 @@ export class CartService {
   decreaseQuantityOfProduct(product: ProductModel) {
     product.quantity--;
     this.productsService.increaseQuantityOfProduct(product.id, 1);
-    console.log(this.cartItems);
+    console.log('cartItems', this.cartItems);
   }
 
   increaseQuantityOfProduct(product: ProductModel) {
     product.quantity++;
     this.productsService.decreaseQuantityOfProduct(product.id, 1);
     console.log(this.cartItems);
+    console.log('cartItems', this.cartItems);
   }
 
   deleteItemFromCart(product: ProductModel) {

@@ -25,6 +25,7 @@ export class CartComponent {
     for (const item of this.cartItems) {
       total += item.price * item.quantity;
     }
+    this.cartService.total = total;
     return total;
   }
 }

@@ -8,6 +8,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AboutComponent } from './components/about/about.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { AuthGuard } from './components/auth/auth.guard';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,7 @@ const routes: Routes = [
   },
   { path: 'about', component: AboutComponent },
   { path: 'login', component: AuthComponent },
+  { path: 'checkout', component: CheckoutComponent },
 ];
 
 @NgModule({

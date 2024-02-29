@@ -17,7 +17,11 @@
       </mat-form-field>
       <button mat-raised-button>Apply Voucher</button>
       <hr width="100%" />
-      <button mat-raised-button style="background-color: orange">
+      <button
+        mat-raised-button
+        style="background-color: orange"
+        routerLink="/checkout"
+      >
         Checkout
       </button>
     </div>
@@ -33,25 +37,3 @@
     Continue Shopping
   </button>
 </div>
-
-<!-- <div class="cartBody">
-  <mat-stepper orientation="vertical">
-    <mat-step color="accent">
-      <ng-template matStepLabel>Step 1</ng-template>
-      <ng-template matStepContent> </ng-template>
-    </mat-step>
-    <mat-step color="accent">
-      <ng-template matStepLabel>Step 2</ng-template>
-      <ng-template matStepContent>
-        <p>This content was also rendered lazily</p>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </ng-template>
-    </mat-step>
-    <mat-step color="accent">
-      <ng-template matStepLabel>Step 3</ng-template>
-      <p>This content was rendered eagerly</p>
-      <button mat-button matStepperPrevious>Back</button>
-    </mat-step>
-  </mat-stepper>
-</div> -->
